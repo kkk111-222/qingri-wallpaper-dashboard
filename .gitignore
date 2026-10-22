@@ -1,0 +1,8 @@
+__pycache__/
+*.log
+*.tmp
+.env*
+.streamlit/
+browser_profile/
+*.sqlite3*
+*.xlsx

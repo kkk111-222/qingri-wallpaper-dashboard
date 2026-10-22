@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="晴日来信的壁纸采样、作品排期与发布效果查看页。">
+  <meta name="referrer" content="no-referrer">
+  <title>晴日来信 · 内容工作台</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <aside>
+    <a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">晴</span><span>晴日来信<small>内容运营工作台</small></span></a>
+    <nav aria-label="主要导航">
+      <a href="#overview">工作总览</a><a href="#samples">表格与选题</a><a href="#works">作品与排期</a><a href="#feedback">发布效果</a>
+    </nav>
+    <div class="sidebar-note"><span class="tag">在线查看版</span><p>每天08:00，一篇4张。<br>采集和发布由本机程序运行。</p></div>
+  </aside>
+  <main>
+    <header><span class="eyebrow">晴日来信 / 壁纸探索记录</span><span id="updated" class="muted" role="status">正在读取数据…</span></header>
+    <div id="error" class="notice" hidden></div>
+    <section id="overview" class="page" aria-labelledby="overview-title">
+      <div class="page-heading"><div><h1 id="overview-title">内容运营工作台</h1><p>先广泛测试，再用自己账号的表现缩小方向。</p></div><a class="button secondary" href="samples.csv" download>下载采样表格</a></div>
+      <div class="metrics" id="metrics"></div>
+      <div class="overview-grid"><article class="card"><h2>平台样本分布</h2><p class="muted">展示采集数量，不代表各平台的流行程度。</p><div id="platforms"></div></article><article class="card next"><span class="eyebrow">接下来的安排</span><h2>下一篇发布</h2><div id="next-post"></div></article></div>
+      <div class="notice"><strong>这里可以查看数据和作品。</strong>在线页面不会操作小红书账号。数据由电脑上的工作台更新并同步，下方标明各平台的实际采集情况。</div>
+      <article class="card"><h2>平台采集情况</h2><div id="collection-status" class="table-wrap"></div></article>
+    </section>
+    <section id="samples" class="page" aria-labelledby="samples-title" hidden>
+      <h1 id="samples-title">表格与选题</h1><p>各平台分别查看。空白表示未取得；点赞、收藏和播放量分别保留。</p>
+      <div class="card"><div class="filters"><label>平台<select id="platform-filter"><option value="">全部平台</option></select></label><label class="search-label">标题或搜索词<input id="search" type="search" placeholder="输入关键词筛选"></label><label class="check"><input id="include-excluded" type="checkbox">显示软件教程等非画风样本</label></div><div class="table-caption"><span id="sample-count"></span><a href="samples.csv" download>下载完整CSV表格</a></div><div id="sample-table" class="table-wrap"></div><div class="pagination"><button id="previous" type="button">上一页</button><span id="page-number" aria-live="polite"></span><button id="following" type="button">下一页</button></div></div>
+      <p class="footnote">搜索样本会受到关键词、排序、作品年龄及作者规模的影响。标题中的风格文字线索不等于图片识别或完整视频理解。</p>
+    </section>
+    <section id="works" class="page" aria-labelledby="works-title" hidden><h1 id="works-title">作品与排期</h1><p>一篇保持一种画风，四张采用不同内容。以下排期来自本机保存的后台核对记录。</p><div id="work-list"></div></section>
+    <section id="feedback" class="page" aria-labelledby="feedback-title" hidden><h1 id="feedback-title">发布效果</h1><p>先看自己的浏览、点赞和收藏，再决定下一轮探索方向。</p><div class="card"><h2>各篇最新记录</h2><div id="feedback-table" class="table-wrap"></div></div><div class="card advice"><h2>当前调整建议</h2><p id="advice-text"></p><p id="advice-rule" class="muted"></p></div><div class="card"><h2>历史观察记录</h2><label>选择作品<select id="note-filter"></select></label><div id="history-table" class="table-wrap"></div></div></section>
+    <footer>晴日来信 · 图片为AI辅助创作。页面为公开查看版，数据以最后同步时间为准。</footer>
+  </main>
+</body></html>
