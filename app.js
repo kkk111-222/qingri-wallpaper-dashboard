@@ -6,7 +6,7 @@ const get=id=>document.getElementById(id);
 function element(tag,text,classes){const el=document.createElement(tag);if(text!==undefined&&text!==null)el.textContent=String(text);if(classes)el.className=classes;return el;}
 function number(value){return typeof value==='number'&&Number.isFinite(value)?value.toLocaleString('zh-CN'):'—';}
 function localTime(value){const time=new Date(value);return Number.isNaN(time.getTime())?'未记录':new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(time);}
-function safeLink(url){try{const parsed=new URL(url,location.href);return parsed.protocol==='https:'||parsed.origin===location.origin?parsed.href:null;}catch{return null;}}
+function safeLink(url){if(typeof url!=='string'||!url.trim())return null;try{const parsed=new URL(url,location.href);return parsed.protocol==='https:'||parsed.origin===location.origin?parsed.href:null;}catch{return null;}}
 function table(host,columns,rows){
   const target=get(host);target.replaceChildren();
   if(!rows.length){target.append(element('p','暂无符合条件的数据。','muted'));return;}
