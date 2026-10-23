@@ -54,6 +54,7 @@ async function start(){
   try{
     const response=await fetch('data.json',{cache:'no-cache'});if(!response.ok)throw new Error('读取失败（'+response.status+'）');data=await response.json();
     if(!Array.isArray(data.samples)||!Array.isArray(data.posts)||!Array.isArray(data.feedback))throw new Error('数据格式不完整');
+    if(data.automation_notice){get('automation-notice').hidden=false;get('automation-notice').textContent=data.automation_notice;}
     get('updated').textContent='最后同步：'+localTime(data.updated_at)+'（北京时间）';overview();works();feedback();
     for(const [key,label] of Object.entries(platforms)){const option=element('option',label);option.value=key;get('platform-filter').append(option);}
     for(const id of ['platform-filter','search','include-excluded'])get(id).addEventListener(id==='search'?'input':'change',()=>{pageIndex=0;renderSamples();});
